@@ -4,6 +4,17 @@ import math
 import cv2
 
 def myHoughLines(image, rho, theta, threshold):
+    """
+    Detect lines in a given image.
+
+    Args
+    - image: 8-bit, single-channel binary source image of dim (m, n)
+    - rho: distance resolution of the accumulator in pixels
+    - theta: angle resolution of the accumulator in radians
+    - threshold: Accumulator threshold parameter. Only those lines are returned that get enough votes
+    Returns
+    - lines: an output vector of lines whose "votes" exceed the provided vote threshold
+    """
     thetaVals = np.linspace(0, math.pi/2, round(math.pi/theta))
     rhoMax = np.hypot(image.shape[0],image.shape[1])
     rhoMaxIndex = int(round(rhoMax/rho))
@@ -22,6 +33,17 @@ def myHoughLines(image, rho, theta, threshold):
     return out
 
 def nonMaxSuppression(mag, angle):
+    """
+    Given a radian and a magnitude at each point,
+    set a magnitude of a pixel with lower than its neighbors magnitude to zero
+
+    Args
+    - magnitude: magnitudes of each pixel
+    - theta: angles of each pixel from the line (1,0) clockwise
+    Returns
+    - suppressedMagnitude: magnitude of each pixel with weak pixels' set to zero
+    """
+    # add zeros to the perimeter of the magnitude
     magPad = np.pad(mag, ((1,1),(1,1),(0,0)), 'constant', constant_values=0)
     out = np.copy(mag)
     for i in range(out.shape[0]):
@@ -87,6 +109,16 @@ def sobelThreshold(img, threshold):
     return newImg
 
 def Canny(image, threshold1, threshold2):
+    """
+    Given an image, highlight edges
+
+    Args
+    - image: 8-bit, single-channel binary source image of dim (m, n)
+    - minVal: minimum value not to discard pixel values
+    - maxVal: pixel value more than this is definitely a line
+    Returns
+    - possiblyLines: image with its edges highlighted
+    """
     mag,angle = np.dsplit(MagnitudeAndAngle(image),2)
     newMag = nonMaxSuppression(mag, angle)
     doubleThres = DoubleThreshold(newMag, threshold1, threshold2)
