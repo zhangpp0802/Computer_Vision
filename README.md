@@ -7,7 +7,7 @@
 * Final Project: Recognization on heads and tails of planaria shapes in images
 
 # Other Sources
-* [CMU OpenCourse: Computational Photography](#http://graphics.cs.cmu.edu/courses/15-463/2010_fall/)
-* [Stanford OpenCourse: Computer Vision](#http://vision.stanford.edu/teaching/cs131_fall1516/schedule.html)
-* [Youtube Channel: First Principle of Computer Vision](#https://www.youtube.com/channel/UCf0WB91t8Ky6AuYcQV0CcLw)
+* [CMU OpenCourse: Computational Photography](http://graphics.cs.cmu.edu/courses/15-463/2010_fall/)
+* [Stanford OpenCourse: Computer Vision](http://vision.stanford.edu/teaching/cs131_fall1516/schedule.html)
+* [Youtube Channel: First Principle of Computer Vision](https://www.youtube.com/channel/UCf0WB91t8Ky6AuYcQV0CcLw)
 
